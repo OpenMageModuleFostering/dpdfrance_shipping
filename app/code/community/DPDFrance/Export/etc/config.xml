@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
 /**
- * DPD France v5.1.2 shipping module for Magento
+ * DPD France v5.1.3 shipping module for Magento
  *
  * @category   DPDFrance
  * @package    DPDFrance_Shipping
@@ -11,105 +11,105 @@
  */
  -->
 <config>
-<modules>
+	<modules>
 		<DPDFrance_Export>
-			<version>5.1.2</version>
+			<version>5.1.3</version>
 			<depends>
 				<Mage_Shipping/>
 			</depends>
 		</DPDFrance_Export>
 	</modules>
-   <global>
-      <blocks>
-         <export>
-            <class>DPDFrance_Export_Block</class>
-         </export>
-      </blocks>
-	  <helpers>
-         <export>
-           <class>DPDFrance_Export_Helper</class>
-         </export>
-      </helpers>
-      <resources>
-        <export_setup>
-          <setup>
-          <module>DPDFrance_Export</module>
-          </setup>
-          <connection>
-           <use>core_setup</use>
-          </connection>
-        </export_setup>
-        <export_write>
-          <connection>
-            <use>core_write</use>
-          </connection>
-        </export_write>
-        <export_read>
-         <connection>
-         <use>core_read</use>
-         </connection>
-        </export_read>
-        </resources>
-      </global>
-  <admin>
-   <routers>
-    <export>
-       <use>admin</use>
-       <args>
-       <module>DPDFrance_Export</module>
-       <frontName>dpdfranceadmin</frontName>
-       </args>
-    </export>
-   </routers>
-  </admin>
-  <adminhtml>
-	<translate>
-		<modules>
-			<Mage_Shipping>
-				<files>
-					<DPDFrance_Export>DPDFrance_Export.csv</DPDFrance_Export>
-				</files>
-			</Mage_Shipping>
-		</modules>
-	</translate>
-	<menu>
-		<sales>
-			<children>
-				<export translate="title">
-					<title>DPD France</title>
-                    <sort_order>1000</sort_order>
-					<action>dpdfranceadmin/export</action>
-				</export>
-			</children>
-		</sales>
-	</menu>	
-	<acl>
-        <resources>
-            <admin>
-                <children>
-                	<sales>
-                        <children>
-                            <export translate="title">
-								<title>DPD France</title>
-			                    <sort_order>1000</sort_order>
-								<action>dpdfranceadmin/export</action>
-							</export>
-						</children>
-					</sales>
-                    <system>
-                        <children>
-                            <config>
-                                <children>
-                                    <export>
-                                        <title>DPD France</title>
-                                    </export>
-                                </children>
-                            </config>
-                        </children>
-                    </system>
-                </children>
-            </admin>
-        </resources>
-    </acl>
-  </adminhtml>
+	<global>
+		<blocks>
+			<export>
+				<class>DPDFrance_Export_Block</class>
+			</export>
+		</blocks>
+		<helpers>
+			<export>
+				<class>DPDFrance_Export_Helper</class>
+			</export>
+		</helpers>
+		<resources>
+			<export_setup>
+				<setup>
+					<module>DPDFrance_Export</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</export_setup>
+			<export_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</export_write>
+			<export_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</export_read>
+		</resources>
+	</global>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<DPDFrance_Export before="Mage_Adminhtml">DPDFrance_Export_Adminhtml</DPDFrance_Export>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<translate>
+			<modules>
+				<Mage_Shipping>
+					<files>
+						<DPDFrance_Export>DPDFrance_Export.csv</DPDFrance_Export>
+					</files>
+				</Mage_Shipping>
+			</modules>
+		</translate>
+		<menu>
+			<sales>
+				<children>
+					<export translate="title">
+						<title>DPD France</title>
+						<sort_order>1000</sort_order>
+						<action>adminhtml/dpdfrance_export</action>
+					</export>
+				</children>
+			</sales>
+		</menu>	
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<sales>
+							<children>
+								<export translate="title">
+									<title>DPD France</title>
+									<sort_order>1000</sort_order>
+									<action>adminhtml/dpdfrance_export</action>
+								</export>
+							</children>
+						</sales>
+						<system>
+							<children>
+								<config>
+									<children>
+										<export>
+											<title>DPD France</title>
+										</export>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
 </config>

@@ -1,6 +1,6 @@
 <?php
 /**
- * DPD France v5.1.2 shipping module for Magento
+ * DPD France v5.1.3 shipping module for Magento
  *
  * @category   DPDFrance
  * @package    DPDFrance_Shipping
@@ -9,7 +9,7 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  
-class DPDFrance_Export_TrackingController extends Mage_Adminhtml_Controller_Action
+class DPDFrance_Export_Adminhtml_DPDFrance_TrackingController extends Mage_Adminhtml_Controller_Action
 {
 
     /**

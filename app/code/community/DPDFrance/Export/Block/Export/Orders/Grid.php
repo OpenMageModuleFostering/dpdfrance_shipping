@@ -1,6 +1,6 @@
 <?php
 /**
- * DPD France v5.1.2 shipping module for Magento
+ * DPD France v5.1.3 shipping module for Magento
  *
  * @category   DPDFrance
  * @package    DPDFrance_Shipping
@@ -361,7 +361,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
         $this->getMassactionBlock()->addItem(
             'export_order', array(
                 'label'=> Mage::helper('export')->__('Export to DPD Station - Integrated insurance'),
-                'url'  => $this->getUrl('*/*/export'),
+                'url'  => $this->getUrl('*/dpdfrance_export/export'),
             )
         );
 				
@@ -369,7 +369,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
         $this->getMassactionBlock()->addItem(
             'exportav_order', array(
                 'label'=> Mage::helper('export')->__('Export to DPD Station - Ad Valorem insurance'),
-                'url'  => $this->getUrl('*/*/exportav'),
+                'url'  => $this->getUrl('*/dpdfrance_export/exportav'),
             )
         );
 
@@ -377,7 +377,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 		$this->getMassactionBlock()->addItem(
             'tracking_order', array(
                 'label'=> Mage::helper('export')->__('Update sent orders'),
-                'url'  => $this->getUrl('*/tracking/tracking'),
+                'url'  => $this->getUrl('*/dpdfrance_tracking/tracking'),
             )
         );
 
@@ -414,7 +414,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
         $options = array();
 		if (version_compare(Mage::getVersion(), '1.4.1', '>=')) {
 			$collection = Mage::getResourceModel('sales/order_grid_collection')
-				->join('order', "main_table.entity_id = order.entity_id AND order.shipping_method like 'dpdfr%'");
+				->join('order', "main_table.entity_id = order.entity_id AND order.shipping_method like 'dpdfr%' AND order.status != 'complete' AND order.status != 'canceled' AND order.status != 'holded' AND order.status != 'closed'");
 		} else{
 			$collection = Mage::getResourceModel('sales/order_collection')
 				->addAttributeToFilter('shipping_method', array('like' => 'dpdfr%'));
