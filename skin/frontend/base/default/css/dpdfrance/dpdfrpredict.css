@@ -1,5 +1,5 @@
 /**
- * DPD France v5.1.2 shipping module for Magento
+ * DPD France shipping module for Magento
  *
  * @category   DPDFrance
  * @package    DPDFrance_Shipping

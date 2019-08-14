@@ -1,6 +1,6 @@
 <?php
 /**
- * DPD France v5.1.3 shipping module for Magento
+ * DPD France shipping module for Magento
  *
  * @category   DPDFrance
  * @package    DPDFrance_Shipping
@@ -13,9 +13,8 @@ class DPDFrance_Predict_Model_Observer extends Mage_Core_Model_Abstract {
 	
     protected function _construct() {}
 
-
 	public function dpdfrpredictgsmAction() {
-		
+	
 	$current = Mage::getSingleton('checkout/session')->getQuote(); // Récupération de la session checkout
 	$modeliv = $current->getShippingAddress()->getShippingMethod(); // Récupération de la methode de livraison choisie par le client
 		

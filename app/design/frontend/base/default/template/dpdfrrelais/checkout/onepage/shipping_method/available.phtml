@@ -20,9 +20,10 @@
             <?php $_sole = $_sole && count($_rates) == 1; foreach ($_rates as $_rate): ?>
                 <li>
                    <?php if ($_rate->getErrorMessage()): ?>
-                    <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage() ?></li></ul></li></ul>
+				   <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage() ?></li></ul></li></ul>
                    <?php else: ?>
-						<?php // Ajout DPD France - ajout onClick="radioCheck()" sur les boutons radio pour afficher/masquer les div DPD Relais et Predict ?>
+						<?php // Ajout DPD France - ajout radioCheck au load + onClick="radioCheck()" sur les boutons radio pour afficher/masquer les div DPD Relais et Predict ?>
+						<?php echo '<script type="text/javascript">radioCheck();</script>'; ?>
                         <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio" onClick="radioCheck()" />
                         <?php // Fin DPD France ?>
                         <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $_rate->getMethodTitle() ?>

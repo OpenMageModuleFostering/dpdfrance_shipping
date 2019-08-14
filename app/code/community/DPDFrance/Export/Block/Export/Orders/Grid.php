@@ -1,10 +1,10 @@
 <?php
 /**
- * DPD France v5.1.3 shipping module for Magento
+ * DPD France shipping module for Magento
  *
  * @category   DPDFrance
  * @package    DPDFrance_Shipping
- * @author     DPD France S.A.S. <ensavoirplus.ecommerce@dpd.fr>
+ * @author     Smile, Jibé, DPD France S.A.S. <ensavoirplus.ecommerce@dpd.fr>
  * @copyright  2015 DPD France S.A.S., société par actions simplifiée, au capital de 18.500.000 euros, dont le siège social est situé 27 Rue du Colonel Pierre Avia - 75015 PARIS, immatriculée au registre du commerce et des sociétés de Paris sous le numéro 444 420 830 
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -17,7 +17,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
     public function __construct()
     {
         parent::__construct();
-        $this->setId('export_export_order_grid');
+        $this->setId('dpdfrexport_export_order_grid');
         $this->setDefaultSort('created_at');
         $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
@@ -101,7 +101,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 	</style>
 	<script type="text/javascript">
 	function LoadMyJs() {
-		var d = document.getElementById("export_export_order_grid_table").children[2]
+		var d = document.getElementById("dpdfrexport_export_order_grid_table").children[2]
 		if (d)
 		{
 			for(var i = 0; i < d.childNodes.length; i++)
@@ -132,7 +132,6 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 			if (!empty($rss->channel->item))
 			{
 				echo '
-				
 					<script type="text/javascript">
 						function show_rss(){
 							document.getElementById("div_rss").style.display="block";
@@ -145,26 +144,26 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 							document.getElementById("button_hide").style.display = "none";
 						}
 						function setup(){
-							$(\'moverlo\').update($(\'moverlo\').innerHTML.times(10));
+							$(\'deplacer\').update($(\'deplacer\').innerHTML.times(10));
 						}
-						function MoveNoticias(){
-							new Effect.Move(\'moverlo\', {
+						function MoveNews(){
+							new Effect.Move(\'deplacer\', {
 								x:-40,
 								y:0,
 								mode:\'relative\',
 								transition:Effect.Transitions.linear,
-								afterFinish:MoveNoticias
+								afterFinish:MoveNews
 							});
 						}
 						Event.observe(window, "load", function(){
 							setup();
-							MoveNoticias();
+							MoveNews();
 						});
 					</script>
 					
 					<div id="div_header" style="font-family:DPDPlutoSansLight; width:300px;margin-left: 20px;">
 						<div id="rss_logo" style="float:left; width:135px; height:24px; margin-top:-7px;">
-							<img src="'.Mage::getBaseUrl('media').'dpdfrance/admin/rss_icon.png" width="24" height="24"/><p> '.Mage::helper('export')->__('DPD News').'</p>
+							<img src="'.Mage::getBaseUrl('media').'dpdfrance/admin/rss_icon.png" width="24" height="24"/><p> '.Mage::helper('dpdfrexport')->__('DPD News').'</p>
 						</div>
 						<div id="button_show" style="display:none;">
 							<a style="float:left;margin-left:0px;text-decoration: none;color: #424143;height: 24px;width: 24px;font-size: 32px;" href="javascript:void(0)" onclick="show_rss()">+</a>
@@ -176,7 +175,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 					<br/>
 				';
 				echo '
-					<div id="div_rss" style="font-family:DPDPlutoSansLight; display:block; background-color: #e6e7e7; color: #424143; border-style: none; margin-left: 20px; margin-right: 20px; margin-top: 10px; padding: 10px;white-space:nowrap;overflow:hidden"><div id="moverlo">';
+					<div id="div_rss" style="font-family:DPDPlutoSansLight; display:block; background-color: #e6e7e7; color: #424143; border-style: none; margin-left: 20px; margin-right: 20px; margin-top: 10px; padding: 10px;white-space:nowrap;overflow:hidden"><div id="deplacer">';
 					foreach ($rss->channel->item as $item)
 						echo '<strong style="font-family:DPDPlutoSansRegular; color:#dc0032;">'.$item->category.' > '.$item->title.' : </strong> '.$item->description.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 					echo '</div></div></div><br/>';
@@ -237,7 +236,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
         $this->addColumn('shipping_method', $columnData);
 		
 		$columnData = array(
-            'header' => Mage::helper('sales')->__('Company').' / '.Mage::helper('export')->__('DPD Pickup point'),
+            'header' => Mage::helper('sales')->__('Company').' / '.Mage::helper('dpdfrexport')->__('DPD Pickup point'),
             'index' => 'shipping_company',
             'width' => '140px',
         );
@@ -360,7 +359,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 		// Menu "exporter les commandes - Assurance intégrée"
         $this->getMassactionBlock()->addItem(
             'export_order', array(
-                'label'=> Mage::helper('export')->__('Export to DPD Station - Integrated insurance'),
+                'label'=> Mage::helper('dpdfrexport')->__('Export to DPD Station - Integrated insurance'),
                 'url'  => $this->getUrl('*/dpdfrance_export/export'),
             )
         );
@@ -368,7 +367,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 		// Menu "exporter les commandes - Assurance Ad Valorem"
         $this->getMassactionBlock()->addItem(
             'exportav_order', array(
-                'label'=> Mage::helper('export')->__('Export to DPD Station - Ad Valorem insurance'),
+                'label'=> Mage::helper('dpdfrexport')->__('Export to DPD Station - Ad Valorem insurance'),
                 'url'  => $this->getUrl('*/dpdfrance_export/exportav'),
             )
         );
@@ -376,7 +375,7 @@ class DPDFrance_Export_Block_Export_Orders_Grid extends Mage_Adminhtml_Block_Wid
 		// Menu "créer les trackings"
 		$this->getMassactionBlock()->addItem(
             'tracking_order', array(
-                'label'=> Mage::helper('export')->__('Update sent orders'),
+                'label'=> Mage::helper('dpdfrexport')->__('Update sent orders'),
                 'url'  => $this->getUrl('*/dpdfrance_tracking/tracking'),
             )
         );
