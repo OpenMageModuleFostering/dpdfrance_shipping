@@ -6,8 +6,8 @@
     "description": "DPD shipping module for Magento - France vendors only",
     "authors": [
     {
-        "name": "DPD S.A.S.",
-        "email": "ensavoirplus.ecommerce@dpd.fr"
+        "name": "DPD France S.A.S.",
+        "email": "support.ecommerce@dpd.fr"
     }
 ],
     "suggest": {
