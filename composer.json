@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/DPDFrance_Shipping",
+    "name": "OpenMageModuleFostering\/DPDFrance_Shipping",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
     "description": "DPD shipping module for Magento - France vendors only",
     "authors": [
-    {
-        "name": "DPD France S.A.S.",
-        "email": "support.ecommerce@dpd.fr"
-    }
-],
+        {
+            "name": "DPD France S.A.S.",
+            "email": "support.ecommerce@dpd.fr"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
