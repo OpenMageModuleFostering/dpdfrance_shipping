@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/DPDFrance_Shipping",
+    "name": "openmage-module-fostering\/dpdfrance_shipping",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "DPD shipping module for Magento - France vendors only",
     "authors": [
